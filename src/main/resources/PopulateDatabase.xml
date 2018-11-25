@@ -2865,11 +2865,9 @@
 			<list>
 				<ref bean="application1" />
 				<ref bean="application5" />
-<<<<<<< HEAD
-=======
 				<ref bean="application6" />
 				<ref bean="application7" />
->>>>>>> master
+
 			</list>
 		</property>
 		<property name="workPlans">
