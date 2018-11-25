@@ -1,6 +1,8 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,4 +49,56 @@ public class ApplicationService {
 		Assert.notNull(a);
 		this.applicationRepository.delete(a);
 	}
+	
+	//Other Methods
+	
+	public Map<String, Double> applicationPriceStats() {
+		final Double[] statistics = this.applicationRepository.applicationPriceStats();
+		final Map<String, Double> res = new HashMap<>();
+
+		res.put("MIN", statistics[0]);
+		res.put("MAX", statistics[1]);
+		res.put("AVG", statistics[2]);
+		res.put("STD", statistics[3]);
+
+		return res;
+	}
+
+	
+	public Map<String, Double> pendingRatio(){
+		final Double ratio = this.applicationRepository.pendingRatio();
+		final Map<String, Double> res = new HashMap<>();
+
+		res.put("Ratio", ratio);
+
+		return res;
+	}
+	
+	public Map<String, Double> acceptedRatio(){
+		final Double ratio = this.applicationRepository.acceptedRatio();
+		final Map<String, Double> res = new HashMap<>();
+
+		res.put("Ratio", ratio);
+
+		return res;
+	}
+	
+	public Map<String, Double> appsRejectedRatio(){
+		final Double ratio = this.applicationRepository.acceptedRatio();
+		final Map<String, Double> res = new HashMap<>();
+
+		res.put("Ratio", ratio);
+
+		return res;
+	}
+	
+	public Map<String, Double> lateApplicationsRatio(){
+		final Double ratio = this.applicationRepository.lateApplicationsRatio();
+		final Map<String, Double> res = new HashMap<>();
+
+		res.put("Ratio", ratio);
+
+		return res;
+	}
+	
 }
